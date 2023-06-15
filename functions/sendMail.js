@@ -1,23 +1,25 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 exports.handler = async (event) => {
-  const { name, email, message } = JSON.parse(event.body);
+  const { phone } = JSON.parse(event.body);
 
-  // Create a transporter using the email service provider's credentials
+  // Create a transporter using Yandex SMTP credentials
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: 'smtp.yandex.com',
+    port: 465,
+    secure: true,
     auth: {
-      user: "your-email@gmail.com",
-      pass: "your-password",
+      user: 'servicecoffee.5upport@yandex.ru',
+      pass: 'Anton7391824',
     },
   });
 
   // Define the email options
   const mailOptions = {
-    from: "your-email@gmail.com",
-    to: "recipient-email@example.com",
-    subject: "New message from your website",
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    from: 'servicecoffee.5upport@yandex.ru',
+    to: 'antoniestories@gmail.com',
+    subject: 'Новая заявка с ServiceCoffee',
+    text: `Дата: ${new Date().toLocaleString()}\nНомер телефона: ${phone}`,
   };
 
   try {
@@ -25,12 +27,12 @@ exports.handler = async (event) => {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Email sent successfully" }),
+      body: JSON.stringify({ message: 'Email sent successfully' }),
     };
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: "Failed to send email" }),
+      body: JSON.stringify({ message: 'Failed to send email' }),
     };
   }
 };
