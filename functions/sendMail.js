@@ -29,7 +29,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin":
-          "https://master--service-coffee.netlify.app",
+          "https://service-coffee.by",
         "Access-Control-Allow-Headers": "Content-Type",
       },
       body: JSON.stringify({ message: "Email sent successfully" }),
