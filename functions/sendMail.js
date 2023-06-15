@@ -23,7 +23,8 @@ exports.handler = async (event) => {
   };
 
 
-    await transporter.sendMail(mailOptions);
+    const response = await transporter.sendMail(mailOptions);
+    console.log(response);
     return {
       statusCode: 200,
       headers: {
