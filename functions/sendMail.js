@@ -18,7 +18,7 @@ exports.handler = async (event) => {
   const mailOptions = {
     from: 'servicecoffee.5upport@yandex.ru',
     to: 'antoniestories@gmail.com',
-    subject: 'Новая заявка с ServiceCoffee',
+    subject: 'Новая заявка с ServiceCoffee', 
     text: `Дата: ${new Date().toLocaleString()}\nНомер телефона: ${phone}`,
   };
 
