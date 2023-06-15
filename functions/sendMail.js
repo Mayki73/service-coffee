@@ -22,9 +22,6 @@ exports.handler = async (event) => {
     text: `Дата: ${new Date().toLocaleString()}\nНомер телефона: ${phone}`,
   };
 
-
-    const response = await transporter.sendMail(mailOptions);
-    console.log(response);
     return {
       statusCode: 200,
       headers: {
