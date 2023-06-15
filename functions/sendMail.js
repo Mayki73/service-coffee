@@ -22,24 +22,28 @@ exports.handler = async (event) => {
     text: `Дата: ${new Date().toLocaleString()}\nНомер телефона: ${phone}`,
   };
 
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin":
-          "https://service-coffee.by",
+          "https://service-coffee.netlify.app",
         "Access-Control-Allow-Headers": "Content-Type",
       },
       body: JSON.stringify({ message: "Email sent successfully" }),
     };
-  // } catch (error) {
-  //   return {
-  //     statusCode: 500,
-  //     headers: {
-  //       "Access-Control-Allow-Origin":
-  //         "https://master--service-coffee.netlify.app",
-  //       "Access-Control-Allow-Headers": "Content-Type",
-  //     },
-  //     body: JSON.stringify({ message: "Failed to send email" }),
-  //   };
-  // }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin":
+          "https://service-coffee.netlify.app",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: JSON.stringify({ message: "Failed to send email" }),
+    };
+  }
+
 };
