@@ -9,6 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^6.9.3"
+    "jquery": "^3.7.0",
+    "nodemailer": "^6.9.3",
+    "uglify-js": "^3.17.4"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-terser": "^2.1.0"
   }
 }
